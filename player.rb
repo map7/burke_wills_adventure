@@ -3,6 +3,7 @@
 #
 #  Player movement is controlled by this class
 #
+
 class Player
   def initialize(window)
     @images = Gosu::Image.load_tiles(window, "media/images/burke_sprite1.png", 30, 48, false)
@@ -25,15 +26,16 @@ class Player
 
   def up
     @y -= 5
-    walk_up_down
+    walk_up
   end
 
   def down
     @y += 5
-    walk_up_down 
+    walk_down 
   end
 
-  def walk_up_down
+  # Change between the two images to walk down
+  def walk_down
     if @walk_cnt > 10
       if @image == @images[0]
         @image = @images[1]
@@ -46,6 +48,20 @@ class Player
     end
   end
 
+  # Change between the two images to walk up
+  def walk_up
+    if @walk_cnt > 10
+      if @image == @images[2]
+        @image = @images[3]
+      else
+        @image = @images[2]
+      end
+      @walk_cnt = 0
+    else
+      @walk_cnt += 1
+    end
+  end
+  
   def move
     @x %= 1024
     @y %= 768
