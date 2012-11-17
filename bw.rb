@@ -4,6 +4,7 @@
 #
 
 require 'gosu'
+require 'chingu'
 require './player'
 require './terrain'
 require './enemy'
@@ -14,7 +15,7 @@ HEIGHT=768
 BG_SIZE=23
 MAX_ENEMIES=5
 
-class GameWindow < Gosu::Window
+class GameWindow < Chingu::Window
   def initialize
     super WIDTH,HEIGHT, false
     self.caption = "Burke & Wills Bogus Adventure Aaron rules"
