@@ -24,8 +24,8 @@ class GameWindow < Gosu::Window
     @beep.play
 
     # Load song
-    @song = Gosu::Song.new(self, "media/sounds/12\ End\ of\ Line.ogg")
-    
+    @song = Gosu::Song.new(self, "media/sounds/06\ Just\ To\ Feel\ Anything.ogg")
+     
     # Main game logic
     # 60 times p/sec
     # window, image, tileable
