@@ -78,6 +78,7 @@ class Player
         @health -= 30
         attack_message.text = "Oh My!"
         attack_message.show = true
+        sleep 0.3
       end
     end
   end

@@ -7,7 +7,6 @@ class AttackMessage
   
   def draw
     if self.show
-      sleep 0.50
       @font.draw(@text, WIDTH/2 - 120,HEIGHT/2, 2)
     end
   end
