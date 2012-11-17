@@ -75,7 +75,7 @@ class Player
       if Gosu::distance(@x, @y, enemy.x, enemy.y) < 50 then
         @x = @last_x
         @y = @last_y
-        @health -= 30
+        @health -= enemy.points
         attack_message.text = "Oh My!"
         attack_message.show = true
         sleep 0.3
