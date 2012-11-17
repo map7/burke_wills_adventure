@@ -13,7 +13,7 @@ BG_SIZE=23
 class GameWindow < Gosu::Window
   def initialize
     super WIDTH,HEIGHT, false
-    self.caption = "Burke & Wills Bogus Adventure"
+    self.caption = "Burke & Wills Bogus Adventure Aaron rules"
 
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
     @beep = Gosu::Sample.new(self, "media/sounds/Pickup-coin.wav")
