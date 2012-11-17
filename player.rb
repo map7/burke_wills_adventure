@@ -9,10 +9,11 @@ class Player
   
   def initialize(window)
     @images = Gosu::Image.load_tiles(window, "media/images/burke_sprite1.png", 30, 48, false)
-
+    @attack_font = Gosu::Font.new(window, Gosu::default_font_name, 100)
+    
     # Set default variables for player
     @image = @images[0]
-    @x = @y = @walk_cnt = 0.0
+    @x = @y = @walk_cnt = @hit_cnt = 0.0
     @score = 0
     @health = 100
   end
@@ -74,6 +75,8 @@ class Player
       if Gosu::distance(@x, @y, enemy.x, enemy.y) < 50 then
         @x = @last_x
         @y = @last_y
+        @health -= 30
+        sleep 0.4
       end
     end
   end
@@ -84,6 +87,7 @@ class Player
   end  
   
   def draw
+    @attack_font.draw(@text, WIDTH/2 - 120,HEIGHT/2, 2)    
     @image.draw(@x, @y, 1)
   end
 end

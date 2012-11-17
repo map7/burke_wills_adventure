@@ -23,6 +23,8 @@ class GameWindow < Gosu::Window
     @beep = Gosu::Sample.new(self, "media/sounds/Pickup-coin.wav")
     @beep.play
 
+
+    
     # Load song
     @song = Gosu::Song.new(self, "media/sounds/06\ Just\ To\ Feel\ Anything.ogg")
      
