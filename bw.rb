@@ -56,7 +56,7 @@ class GameWindow < Gosu::Window
     @font.draw("Burke & Wills Bogus Adventure", 10,10, 1)
     @font.draw("Score", WIDTH - 120,10, 1)    
 
-    @terrain.draw(20,20)
+    @terrain.draw
     
     @player.draw
 
