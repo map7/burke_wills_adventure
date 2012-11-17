@@ -60,6 +60,14 @@ class Player
     @walk_cnt = 11 if @image == @images[0] or @image == @images[1] # Turn straight away
     walk { @image = (@image == @images[2])? @images[3] : @images[2] }
   end
+
+  def check_enemies(enemies)
+    enemies.each do |enemy|
+      if Gosu::distance(@x, @y, enemy.x, enemy.y)
+        puts 'hit'
+      end
+    end
+  end
   
   def move
     @x %= 1024

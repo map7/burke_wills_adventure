@@ -3,6 +3,8 @@
 #
 
 class Enemy
+  attr_reader :x, :y
+  
   def initialize(window)
     @snake = Gosu::Image.load_tiles(window, "media/images/snake_sprite_60.png", 60, 48, false)
     @x = rand(WIDTH)

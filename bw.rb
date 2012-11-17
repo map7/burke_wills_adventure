@@ -56,6 +56,9 @@ class GameWindow < Gosu::Window
       exit
     end
 
+    # Check for enemies
+    @player.check_enemies(@enemies)
+    
     # Process the move
     @player.move
   end
