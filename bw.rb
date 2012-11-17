@@ -1,13 +1,10 @@
 #!/usr/bin/env ruby
-
-require 'gosu'
-require './player'
 #
 # Burke & Wills
 #
-# Aaron 10.0.1.125
-# Mick  10.0.1.126
-#
+
+require 'gosu'
+require './player'
 
 WIDTH=1024
 HEIGHT=768
