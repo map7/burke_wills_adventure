@@ -84,7 +84,5 @@ class GameWindow < Gosu::Window
   end
 end
 
-
-
 window = GameWindow.new
 window.show

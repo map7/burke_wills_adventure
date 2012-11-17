@@ -63,8 +63,8 @@ class Player
 
   def check_enemies(enemies)
     enemies.each do |enemy|
-      if Gosu::distance(@x, @y, enemy.x, enemy.y)
-        puts 'hit'
+      if Gosu::distance(@x, @y, enemy.x, enemy.y) < 50 then
+        puts 'ouch'
       end
     end
   end
