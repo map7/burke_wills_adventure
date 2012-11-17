@@ -16,7 +16,7 @@ MAX_ENEMIES=5
 class GameWindow < Gosu::Window
   def initialize
     super WIDTH,HEIGHT, false
-    self.caption = "Burke & Wills Bogus Adventure"
+    self.caption = "Burke & Wills Bogus Adventure Aaron rules"
 
     # Load default font and play little sound to start game
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
