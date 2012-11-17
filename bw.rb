@@ -11,6 +11,7 @@ require './enemy'
 WIDTH=1024
 HEIGHT=768
 BG_SIZE=23
+MAX_ENEMIES=5
 
 class GameWindow < Gosu::Window
   def initialize
@@ -30,7 +31,7 @@ class GameWindow < Gosu::Window
     @terrain = Terrain.new(self)
 
     # Create enemy's
-    @enemy = Enemy.new(self)
+    @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self)}
     
     # Create a new player
     @player = Player.new(self)
@@ -60,7 +61,7 @@ class GameWindow < Gosu::Window
     @font.draw("Score", WIDTH - 120,10, 1)    
 
     @terrain.draw
-    @enemy.draw
+    @enemies.each {|enemy| enemy.draw }
     @player.draw
 
     # Tile the background
@@ -71,10 +72,7 @@ class GameWindow < Gosu::Window
         @bg_image.draw(BG_SIZE*x,BG_SIZE*y,0,1,1)
       end
     end
-
   end
-
-
 end
 
 
