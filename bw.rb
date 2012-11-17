@@ -8,6 +8,7 @@ require 'gosu'
 
 WIDTH=1024
 HEIGHT=768
+BG_SIZE=23
 
 class GameWindow < Gosu::Window
   def initialize
@@ -19,16 +20,17 @@ class GameWindow < Gosu::Window
     # Main game logic
     # 60 times p/sec
     # window, image, tileable
-    @background_image = Gosu::Image.new(self, "background.png", true)
+    @bg_image = Gosu::Image.new(self, "media/images/desert_tile.png", false)
   end
   
   def draw
-    0..3.times do |x|
-      0..3.times do |y|
-        @background_image.draw(500*y,500*x,0)
+    (WIDTH/BG_SIZE + 1).times do |x|
+      (HEIGHT/BG_SIZE + 1).times do |y|
+        #
+        # x, y, z-order
+        @bg_image.draw(BG_SIZE*x,BG_SIZE*y,0,1,1)
       end
     end
-
   end
 end
 
