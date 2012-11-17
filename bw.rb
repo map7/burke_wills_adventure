@@ -1,13 +1,10 @@
 #!/usr/bin/env ruby
-
-require 'gosu'
-require './player'
 #
 # Burke & Wills
 #
-# Aaron 10.0.1.125
-# Mick  10.0.1.126
-#
+
+require 'gosu'
+require './player'
 
 WIDTH=1024
 HEIGHT=768
@@ -18,13 +15,17 @@ class GameWindow < Gosu::Window
     super WIDTH,HEIGHT, false
     self.caption = "Burke & Wills Bogus Adventure"
 
+    @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
+    @beep = Gosu::Sample.new(self, "media/sounds/Pickup-coin.wav")
+    @beep.play
+    
     # Main game logic
     # 60 times p/sec
     # window, image, tileable
     @bg_image = Gosu::Image.new(self, "media/images/desert_tile.png", true)
 
     @player = Player.new(self)
-    @player.warp(WIDTH/2, HEIGHT-40) # Position starting point of player.
+    @player.warp(WIDTH/2, HEIGHT-60) # Position starting point of player.
   end
   
   def update
@@ -46,7 +47,12 @@ class GameWindow < Gosu::Window
   end
   
   def draw
+    @font.draw("Burke & Wills Bogus Adventure", 10,10, 1)
+    @font.draw("Score", WIDTH - 120,10, 1)    
+
     @player.draw
+
+    # Tile the background
     (WIDTH/BG_SIZE + 1).times do |x|
       (HEIGHT/BG_SIZE + 1).times do |y|
         #
@@ -54,6 +60,7 @@ class GameWindow < Gosu::Window
         @bg_image.draw(BG_SIZE*x,BG_SIZE*y,0,1,1)
       end
     end
+
   end
 
 
