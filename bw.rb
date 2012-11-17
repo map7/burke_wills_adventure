@@ -4,7 +4,6 @@
 #
 
 require 'gosu'
-require 'chingu'
 require './player'
 require './terrain'
 require './enemy'
@@ -16,7 +15,7 @@ HEIGHT=768
 BG_SIZE=23
 MAX_ENEMIES=5
 
-class GameWindow < Chingu::Window
+class GameWindow < Gosu::Window
   def initialize
     super WIDTH,HEIGHT, false
     self.caption = "Burke & Wills Bogus Adventure Aaron rules"
@@ -26,7 +25,7 @@ class GameWindow < Chingu::Window
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
     @beep = Gosu::Sample.new(self, "media/sounds/Pickup-coin.wav")
     @beep.play
-    
+
     # Load song
     @song = Gosu::Song.new(self, "media/sounds/06\ Just\ To\ Feel\ Anything.ogg")
      
@@ -49,15 +48,9 @@ class GameWindow < Chingu::Window
     
     # Put in opening message
     @message = Message.new(self)
-    @message.text = "test"
-    @message_finish = false # message not finished
-    
   end
   
   def update
-    # Store previous coordinates incase of an attack
-    @player.storage_coordinates
-    
     # Keyboard Events
     if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
       @player.left
