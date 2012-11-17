@@ -3,12 +3,15 @@ require 'gosu'
 # Burke & Wills
 #
 # Aaron 10.0.1.125
-# Mick 10.0.1.126
+# Mick  10.0.1.126
 #
+
+WIDTH=1024
+HEIGHT=768
 
 class GameWindow < Gosu::Window
   def initialize
-    super 1024,768, false
+    super WIDTH,HEIGHT, false
     self.caption = "Burke & Wills Bogus Adventure"
   end
   
@@ -20,7 +23,12 @@ class GameWindow < Gosu::Window
   end
   
   def draw
-    @background_image.draw(0,0,0)
+    0..3.times do |x|
+      0..3.times do |y|
+        @background_image.draw(500*y,500*x,0)
+      end
+    end
+
   end
 end
 
