@@ -1,4 +1,9 @@
 require 'gosu'
+#
+# Burke & Wills
+#
+# Aaron 10.0.1.125
+# Mick 10.0.1.126
 
 class GameWindow < Gosu::Window
   def initialize
