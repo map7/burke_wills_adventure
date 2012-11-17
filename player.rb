@@ -1,3 +1,8 @@
+#
+# player.rb
+#
+#  Player movement is controlled by this class
+#
 class Player
   def initialize(window)
     @image = Gosu::Image.new(window, "media/images/burke_sprite1.png", false)
