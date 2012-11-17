@@ -1,4 +1,5 @@
 require 'gosu'
+require './player'
 #
 # Burke & Wills
 #
@@ -14,16 +15,21 @@ class GameWindow < Gosu::Window
   def initialize
     super WIDTH,HEIGHT, false
     self.caption = "Burke & Wills Bogus Adventure"
-  end
-  
-  def update
+
     # Main game logic
     # 60 times p/sec
     # window, image, tileable
-    @bg_image = Gosu::Image.new(self, "media/images/desert_tile.png", false)
+    @bg_image = Gosu::Image.new(self, "media/images/desert_tile.png", true)
+
+    @player = Player.new(self)
+    @player.warp(320, 240) # Position starting point of player.
+  end
+  
+  def update
   end
   
   def draw
+    @player.draw
     (WIDTH/BG_SIZE + 1).times do |x|
       (HEIGHT/BG_SIZE + 1).times do |y|
         #
@@ -32,7 +38,11 @@ class GameWindow < Gosu::Window
       end
     end
   end
+
+
 end
+
+
 
 window = GameWindow.new
 window.show
