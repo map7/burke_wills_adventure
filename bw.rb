@@ -22,7 +22,7 @@ class GameWindow < Gosu::Window
     @bg_image = Gosu::Image.new(self, "media/images/desert_tile.png", true)
 
     @player = Player.new(self)
-    @player.warp(320, 240) # Position starting point of player.
+    @player.warp(WIDTH/2, HEIGHT-20) # Position starting point of player.
   end
   
   def update
