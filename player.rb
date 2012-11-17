@@ -12,7 +12,7 @@ class Player
     @image = @images[0]
     @x = @y = @walk_cnt = 0.0
     @score = 0
-    @heath = 100
+    @health = 100
   end
 
   def warp(x,y)

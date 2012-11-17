@@ -18,9 +18,13 @@ class GameWindow < Gosu::Window
     super WIDTH,HEIGHT, false
     self.caption = "Burke & Wills Bogus Adventure"
 
+    # Load default font and play little sound to start game
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
     @beep = Gosu::Sample.new(self, "media/sounds/Pickup-coin.wav")
     @beep.play
+
+    # Load song
+    @song = Gosu::Song.new(self, "media/sounds/12\ End\ of\ Line.ogg")
     
     # Main game logic
     # 60 times p/sec
@@ -64,6 +68,7 @@ class GameWindow < Gosu::Window
     @terrain.draw
     @enemies.each {|enemy| enemy.draw }
     @player.draw
+    @song.play(true) #Loop is on
 
     # Tile the background
     (WIDTH/BG_SIZE + 1).times do |x|
