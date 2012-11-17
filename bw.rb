@@ -22,10 +22,25 @@ class GameWindow < Gosu::Window
     @bg_image = Gosu::Image.new(self, "media/images/desert_tile.png", true)
 
     @player = Player.new(self)
-    @player.warp(WIDTH/2, HEIGHT-20) # Position starting point of player.
+    @player.warp(WIDTH/2, HEIGHT-40) # Position starting point of player.
   end
   
   def update
+    # Keyboard Events
+    if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
+      @player.left
+    elsif button_down? Gosu::KbRight or button_down? Gosu::GpRight then
+      @player.right
+    elsif button_down? Gosu::KbUp or button_down? Gosu::GpButton0 then
+      @player.up
+    elsif button_down? Gosu::KbDown then
+      @player.down
+    elsif button_down? Gosu::KbEscape
+      exit
+    end
+
+    # Process the move
+    @player.move
   end
   
   def draw
