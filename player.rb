@@ -18,10 +18,12 @@ class Player
 
   def left
     @x -= 5
+    @image = @images[5]    
   end
 
   def right
     @x += 5
+    @image = @images[4]
   end
 
   def up
