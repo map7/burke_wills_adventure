@@ -5,11 +5,14 @@
 #
 
 class Player
+  attr_reader :score, :health
+  
   def initialize(window)
     @images = Gosu::Image.load_tiles(window, "media/images/burke_sprite1.png", 30, 48, false)
     @image = @images[0]
     @x = @y = @walk_cnt = 0.0
     @score = 0
+    @health = 100
   end
 
   def warp(x,y)
@@ -56,6 +59,14 @@ class Player
   def walk_up
     @walk_cnt = 11 if @image == @images[0] or @image == @images[1] # Turn straight away
     walk { @image = (@image == @images[2])? @images[3] : @images[2] }
+  end
+
+  def check_enemies(enemies)
+    enemies.each do |enemy|
+      if Gosu::distance(@x, @y, enemy.x, enemy.y)
+        puts 'hit'
+      end
+    end
   end
   
   def move
