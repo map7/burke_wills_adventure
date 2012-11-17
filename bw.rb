@@ -16,6 +16,8 @@ class GameWindow < Gosu::Window
     self.caption = "Burke & Wills Bogus Adventure"
 
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
+    @beep = Gosu::Sample.new(self, "media/sounds/Pickup-coin.wav")
+    @beep.play
     
     # Main game logic
     # 60 times p/sec
