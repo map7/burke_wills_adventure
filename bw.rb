@@ -9,6 +9,7 @@ require './player'
 require './terrain'
 require './enemy'
 require './message'
+require './attack_message'
 
 WIDTH=1024
 HEIGHT=768
@@ -38,14 +39,18 @@ class GameWindow < Chingu::Window
 
     # Create enemy's
     @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self)}
+
+    @attack_message = AttackMessage.new(self)
     
     # Create a new player
-    @player = Player.new(self)
+    @player = Player.new(self, @attack_message)
     @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
     
     # Put in opening message
     @message = Message.new(self)
     @message.text = "test"
+
+
   end
   
   def update
@@ -55,16 +60,16 @@ class GameWindow < Chingu::Window
     # Keyboard Events
     if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
       @player.left
-      @message.hide = true
+      @message.show = false
     elsif button_down? Gosu::KbRight or button_down? Gosu::GpRight then
       @player.right
-      @message.hide = true
+      @message.show = false
     elsif button_down? Gosu::KbUp or button_down? Gosu::GpButton0 then
       @player.up
-      @message.hide = true
+      @message.show = false
     elsif button_down? Gosu::KbDown then
       @player.down
-      @message.hide = true
+      @message.show = false
     elsif button_down? Gosu::KbEscape
       exit
     end
@@ -79,8 +84,7 @@ class GameWindow < Chingu::Window
   
   def draw
     @font.draw("Burke & Wills Bogus Adventure", 10,10, 1)
-    @font.draw("Health #{@player.health}", WIDTH - 220,10, 1)        
-    @font.draw("Score #{@player.score}", WIDTH - 120,10, 1)
+    @font.draw("Health #{@player.health}", WIDTH - 120,10, 1)        
 
     @terrain.draw
     @enemies.each {|enemy| enemy.draw }

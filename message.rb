@@ -4,16 +4,16 @@
 
 class Message
 
-  attr_accessor :text, :hide
+  attr_accessor :text, :show
 
   def initialize(window)
     @message = Gosu::Image.new(window, "media/images/bottom_screen_dialog.png",true)
     @font = Gosu::Font.new(window, Gosu::default_font_name, 20)
+    @show = true
   end
   
   def draw
-    
-    unless self.hide == true
+    if self.show
       @font.draw("Oh no! I've lost Wills! I need to find him if we're ever",
                  350, HEIGHT-120, 2, 1, 1, 0xff000000)
       @font.draw("going to make it back to camp in time!", 350, HEIGHT-90, 2, 1, 1, 0xff000000)
