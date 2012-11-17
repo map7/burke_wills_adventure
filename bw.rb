@@ -6,6 +6,7 @@
 require 'gosu'
 require './player'
 require './terrain'
+require './enemy'
 
 WIDTH=1024
 HEIGHT=768
@@ -25,9 +26,11 @@ class GameWindow < Gosu::Window
     # window, image, tileable
     @bg_image = Gosu::Image.new(self, "media/images/desert_tile.png", true)
 
-
     # Create terrain object for shrubs mostly, not too big, not too small
     @terrain = Terrain.new(self)
+
+    # Create enemy's
+    @enemy = Enemy.new(self)
     
     # Create a new player
     @player = Player.new(self)
@@ -57,7 +60,7 @@ class GameWindow < Gosu::Window
     @font.draw("Score", WIDTH - 120,10, 1)    
 
     @terrain.draw
-    
+    @enemy.draw
     @player.draw
 
     # Tile the background
