@@ -5,11 +5,14 @@
 #
 
 class Player
+  attr_reader :score, :health
+  
   def initialize(window)
     @images = Gosu::Image.load_tiles(window, "media/images/burke_sprite1.png", 30, 48, false)
     @image = @images[0]
     @x = @y = @walk_cnt = 0.0
     @score = 0
+    @heath = 100
   end
 
   def warp(x,y)

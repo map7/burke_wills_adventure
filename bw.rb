@@ -58,7 +58,8 @@ class GameWindow < Gosu::Window
   
   def draw
     @font.draw("Burke & Wills Bogus Adventure", 10,10, 1)
-    @font.draw("Score", WIDTH - 120,10, 1)    
+    @font.draw("Health #{@player.health}", WIDTH - 220,10, 1)        
+    @font.draw("Score #{@player.score}", WIDTH - 120,10, 1)
 
     @terrain.draw
     @enemies.each {|enemy| enemy.draw }
