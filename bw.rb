@@ -44,19 +44,23 @@ class GameWindow < Gosu::Window
     
     # Put in opening message
     @message = Message.new(self)
-    
+    @message.text = "test"
   end
   
   def update
     # Keyboard Events
     if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
       @player.left
+      @message.hide = true
     elsif button_down? Gosu::KbRight or button_down? Gosu::GpRight then
       @player.right
+      @message.hide = true
     elsif button_down? Gosu::KbUp or button_down? Gosu::GpButton0 then
       @player.up
+      @message.hide = true
     elsif button_down? Gosu::KbDown then
       @player.down
+      @message.hide = true
     elsif button_down? Gosu::KbEscape
       exit
     end
@@ -66,16 +70,13 @@ class GameWindow < Gosu::Window
     
     # Process the move
     @player.move
+
   end
   
   def draw
     @font.draw("Burke & Wills Bogus Adventure", 10,10, 1)
     @font.draw("Health #{@player.health}", WIDTH - 220,10, 1)        
     @font.draw("Score #{@player.score}", WIDTH - 120,10, 1)
-   
-    @font.draw("Oh no! I've lost Wills! I need to find him if we're ever",
-                350, HEIGHT-120, 2, 1, 1, 0xff000000)
-    @font.draw("going to make it back to camp in time!", 350, HEIGHT-90, 2, 1, 1, 0xff000000)
 
     @terrain.draw
     @enemies.each {|enemy| enemy.draw }
