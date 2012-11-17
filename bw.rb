@@ -18,6 +18,7 @@ class GameWindow < Gosu::Window
   def initialize
     super WIDTH,HEIGHT, false
     self.caption = "Burke & Wills Bogus Adventure Aaron rules"
+    
 
     # Load default font and play little sound to start game
     @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
@@ -44,6 +45,7 @@ class GameWindow < Gosu::Window
     
     # Put in opening message
     @message = Message.new(self)
+    @message_finish = false # message not finished
     
   end
   
@@ -72,7 +74,7 @@ class GameWindow < Gosu::Window
     @font.draw("Burke & Wills Bogus Adventure", 10,10, 1)
     @font.draw("Health #{@player.health}", WIDTH - 220,10, 1)        
     @font.draw("Score #{@player.score}", WIDTH - 120,10, 1)
-   
+
     @font.draw("Oh no! I've lost Wills! I need to find him if we're ever",
                 350, HEIGHT-120, 2, 1, 1, 0xff000000)
     @font.draw("going to make it back to camp in time!", 350, HEIGHT-90, 2, 1, 1, 0xff000000)
@@ -91,6 +93,11 @@ class GameWindow < Gosu::Window
         @bg_image.draw(BG_SIZE*x,BG_SIZE*y,0,1,1)
       end
     end
+    
+    def g_input
+      @finished = true
+    end
+    
   end
 end
 
