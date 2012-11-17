@@ -7,6 +7,7 @@ require 'gosu'
 require './player'
 require './terrain'
 require './enemy'
+require './message'
 
 WIDTH=1024
 HEIGHT=768
@@ -39,7 +40,10 @@ class GameWindow < Gosu::Window
     
     # Create a new player
     @player = Player.new(self)
-    @player.warp(WIDTH/2, HEIGHT-60) # Position starting point of player.
+    @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
+    
+    # Put in opening message
+    @message = Message.new(self)
   end
   
   def update
@@ -72,6 +76,7 @@ class GameWindow < Gosu::Window
     @enemies.each {|enemy| enemy.draw }
     @player.draw
     @song.play(true) #Loop is on
+    @message.draw
 
     # Tile the background
     (WIDTH/BG_SIZE + 1).times do |x|
