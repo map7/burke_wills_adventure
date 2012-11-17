@@ -43,7 +43,7 @@ class GameWindow < Chingu::Window
     @attack_message = AttackMessage.new(self)
     
     # Create a new player
-    @player = Player.new(self, @attack_message)
+    @player = Player.new(self)
     @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
     
     # Put in opening message
@@ -60,22 +60,22 @@ class GameWindow < Chingu::Window
     # Keyboard Events
     if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
       @player.left
-      @message.show = false
+      @attack_message.show, @message.show = false
     elsif button_down? Gosu::KbRight or button_down? Gosu::GpRight then
       @player.right
-      @message.show = false
+      @attack_message.show, @message.show = false
     elsif button_down? Gosu::KbUp or button_down? Gosu::GpButton0 then
       @player.up
-      @message.show = false
+      @attack_message.show, @message.show = false
     elsif button_down? Gosu::KbDown then
       @player.down
-      @message.show = false
+      @attack_message.show, @message.show = false
     elsif button_down? Gosu::KbEscape
       exit
     end
 
     # Check for enemies
-    @player.check_enemies(@enemies)
+    @player.check_enemies(@enemies, @attack_message)
     
     # Process the move
     @player.move
@@ -91,6 +91,7 @@ class GameWindow < Chingu::Window
     @player.draw
     @song.play(true) #Loop is on
     @message.draw
+    @attack_message.draw
 
     # Tile the background
     (WIDTH/BG_SIZE + 1).times do |x|

@@ -5,7 +5,7 @@
 #
 
 class Player
-  attr_reader :score, :health
+  attr_reader :score, :health, :message
   
   def initialize(window)
     @images = Gosu::Image.load_tiles(window, "media/images/burke_sprite1.png", 30, 48, false)
@@ -70,12 +70,14 @@ class Player
     walk { @image = (@image == @images[2])? @images[3] : @images[2] }
   end
 
-  def check_enemies(enemies)
+  def check_enemies(enemies,attack_message)
     enemies.each do |enemy|
       if Gosu::distance(@x, @y, enemy.x, enemy.y) < 50 then
         @x = @last_x
         @y = @last_y
         @health -= 30
+        attack_message.text = "Oh My!"
+        attack_message.show = true
         sleep 0.4
       end
     end
@@ -87,7 +89,6 @@ class Player
   end  
   
   def draw
-    @attack_font.draw(@text, WIDTH/2 - 120,HEIGHT/2, 2)    
     @image.draw(@x, @y, 1)
   end
 end
