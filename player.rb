@@ -35,31 +35,25 @@ class Player
   end
 
   # Change between the two images to walk down
-  def walk_down
+  def walk(&block)
     if @walk_cnt > 10
-      if @image == @images[0]
-        @image = @images[1]
-      else
-        @image = @images[0]
-      end
+      yield
       @walk_cnt = 0
     else
       @walk_cnt += 1
     end
   end
 
+  # Change between the two images to walk down
+  def walk_down
+    @walk_cnt = 11 if @image == @images[2] or @image == @images[3] # Turn straight away
+    walk { @image = (@image == @images[0])? @images[1] : @images[0] }
+  end
+  
   # Change between the two images to walk up
   def walk_up
-    if @walk_cnt > 10
-      if @image == @images[2]
-        @image = @images[3]
-      else
-        @image = @images[2]
-      end
-      @walk_cnt = 0
-    else
-      @walk_cnt += 1
-    end
+    @walk_cnt = 11 if @image == @images[0] or @image == @images[1] # Turn straight away
+    walk { @image = (@image == @images[2])? @images[3] : @images[2] }
   end
   
   def move
