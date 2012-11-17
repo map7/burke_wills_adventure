@@ -9,16 +9,24 @@ class Player
   
   def initialize(window)
     @images = Gosu::Image.load_tiles(window, "media/images/burke_sprite1.png", 30, 48, false)
+
+    # Set default variables for player
     @image = @images[0]
     @x = @y = @walk_cnt = 0.0
     @score = 0
     @health = 100
   end
 
+  # Jump to a point
   def warp(x,y)
     @x, @y = x, y
   end
 
+  def storage_coordinates
+    @last_x = @x
+    @last_y = @y
+  end
+  
   def left
     @x -= 5
     @image = @images[5]    
@@ -64,7 +72,8 @@ class Player
   def check_enemies(enemies)
     enemies.each do |enemy|
       if Gosu::distance(@x, @y, enemy.x, enemy.y) < 50 then
-        puts 'ouch'
+        @x = @last_x
+        @y = @last_y
       end
     end
   end

@@ -43,6 +43,9 @@ class GameWindow < Gosu::Window
   end
   
   def update
+    # Store previous coordinates incase of an attack
+    @player.storage_coordinates
+    
     # Keyboard Events
     if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
       @player.left
