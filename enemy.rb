@@ -5,13 +5,19 @@
 class Enemy
   attr_reader :x, :y
   
-  def initialize(window)
-    @snake = Gosu::Image.load_tiles(window, "media/images/snake_sprite_60.png", 60, 48, false)
+  def initialize(window, enemy)
+    case enemy
+    when 0
+      @enemy = Gosu::Image.load_tiles(window, "media/images/spider_sprite_55.png",55, 48, false)
+    when 1
+      @enemy = Gosu::Image.load_tiles(window, "media/images/snake_sprite_60.png", 60, 48, false)
+    end
+
     @x = rand(WIDTH)
     @y = rand(HEIGHT)
   end
 
   def draw
-    @snake[0].draw(@x,@y,1)
+    @enemy[0].draw(@x,@y,1)
   end
 end

@@ -38,7 +38,7 @@ class GameWindow < Chingu::Window
     @terrain = Terrain.new(self)
 
     # Create enemy's
-    @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self)}
+    @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self, 0)}
 
     @attack_message = AttackMessage.new(self)
     
@@ -49,8 +49,6 @@ class GameWindow < Chingu::Window
     # Put in opening message
     @message = Message.new(self)
     @message.text = "test"
-
-
   end
   
   def update
