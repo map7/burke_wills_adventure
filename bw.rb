@@ -24,8 +24,6 @@ class GameWindow < Gosu::Window
     @speech_font = Gosu::Font.new(self, Gosu::default_font_name, 20)
     @beep = Gosu::Sample.new(self, "media/sounds/Pickup-coin.wav")
     @beep.play
-
-
     
     # Load song
     @song = Gosu::Song.new(self, "media/sounds/06\ Just\ To\ Feel\ Anything.ogg")
