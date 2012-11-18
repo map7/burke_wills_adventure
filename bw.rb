@@ -19,11 +19,24 @@ BG_SIZE=23
 MAX_ENEMIES=5
 
 class Game < Chingu::Window
+  attr_reader :player
+  
   def initialize
+    # Set window size and caption
     super WIDTH,HEIGHT, false
     self.caption = "Burke & Wills Bogus Adventure Aaron rules"
-    push_game_state(Stage1)
+
+    # Define transition of states and push to stage1
     transitional_game_state(Chingu::GameStates::FadeTo, {speed: 5})
+    push_game_state(Stage1)
+
+    # Play little bling sound
+    Sample["media/sounds/Pickup-coin.wav"].play
+    
+    # Load song
+    Song["media/sounds/06\ Just\ To\ Feel\ Anything.ogg"].play(true)
+
+    @player = Player.new(self)
   end
 end
 

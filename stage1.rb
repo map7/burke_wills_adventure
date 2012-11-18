@@ -5,16 +5,8 @@ class Stage1 < Chingu::GameState
     super
      # Load default font and play little sound to start game
     @font = Font[default_font_name, 20]
-    
-    @beep = Sample["media/sounds/Pickup-coin.wav"]
-    @beep.play
-    
-    # Load song
-    Song["media/sounds/06\ Just\ To\ Feel\ Anything.ogg"].play(true)
-     
-    # Main game logic
-    # 60 times p/sec
-    # window, image, tileable
+
+    # Set background image
     @bg_image = Image["media/images/desert_tile.png"]
 
     # Create terrain object for shrubs mostly, not too big, not too small
