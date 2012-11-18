@@ -3,7 +3,8 @@
 # Burke & Wills
 #
 
-require 'gosu'
+require 'chingu'
+include Gosu
 require './player'
 require './terrain'
 require './enemy'
@@ -15,24 +16,30 @@ HEIGHT=768
 BG_SIZE=23
 MAX_ENEMIES=5
 
-class GameWindow < Gosu::Window
+class Game < Chingu::Window
   def initialize
     super WIDTH,HEIGHT, false
     self.caption = "Burke & Wills Bogus Adventure Aaron rules"
+    push_game_state(Stage1)
+  end
+end
+
+class Stage1 < Chingu::GameState
+  def initialize
+    super
+     # Load default font and play little sound to start game
+    @font = Font[default_font_name, 20]
     
-
-    # Load default font and play little sound to start game
-    @font = Gosu::Font.new(self, Gosu::default_font_name, 20)
-    @beep = Gosu::Sample.new(self, "media/sounds/Pickup-coin.wav")
+    @beep = Sample["media/sounds/Pickup-coin.wav"]
     @beep.play
-
+    
     # Load song
-    @song = Gosu::Song.new(self, "media/sounds/06\ Just\ To\ Feel\ Anything.ogg")
+    Song["media/sounds/06\ Just\ To\ Feel\ Anything.ogg"].play(true)
      
     # Main game logic
     # 60 times p/sec
     # window, image, tileable
-    @bg_image = Gosu::Image.new(self, "media/images/desert_tile.png", true)
+    @bg_image = Image["media/images/desert_tile.png"]
 
     # Create terrain object for shrubs mostly, not too big, not too small
     @terrain = Terrain.new(self)
@@ -40,54 +47,54 @@ class GameWindow < Gosu::Window
     # Create enemy's
     @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self, rand(2))}
 
-    @attack_message = AttackMessage.new(self)
+#     @attack_message = AttackMessage.new(self)
     
-    # Create a new player
-    @player = Player.new(self)
-    @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
+#     # Create a new player
+#     @player = Player.new(self)
+#     @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
     
-    # Put in opening message
-    @message = Message.new(self)
+#     # Put in opening message
+#     @message = Message.new(self)
   end
   
-  def update
-    @player.storage_coordinates
+#   def update
+#     @player.storage_coordinates
     
-    # Keyboard Events
-    if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
-      @player.left
-      @attack_message.show, @message.show = false
-    elsif button_down? Gosu::KbRight or button_down? Gosu::GpRight then
-      @player.right
-      @attack_message.show, @message.show = false
-    elsif button_down? Gosu::KbUp or button_down? Gosu::GpButton0 then
-      @player.up
-      @attack_message.show, @message.show = false
-    elsif button_down? Gosu::KbDown then
-      @player.down
-      @attack_message.show, @message.show = false
-    elsif button_down? Gosu::KbEscape
-      exit
-    end
+#     # Keyboard Events
+#     if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
+#       @player.left
+#       @attack_message.show, @message.show = false
+#     elsif button_down? Gosu::KbRight or button_down? Gosu::GpRight then
+#       @player.right
+#       @attack_message.show, @message.show = false
+#     elsif button_down? Gosu::KbUp or button_down? Gosu::GpButton0 then
+#       @player.up
+#       @attack_message.show, @message.show = false
+#     elsif button_down? Gosu::KbDown then
+#       @player.down
+#       @attack_message.show, @message.show = false
+#     elsif button_down? Gosu::KbEscape
+#       exit
+#     end
 
-    # Check for enemies
-    @player.check_enemies(@enemies, @attack_message)
+#     # Check for enemies
+#     @player.check_enemies(@enemies, @attack_message)
     
-    # Process the move
-    @player.move
+#     # Process the move
+#     @player.move
 
-  end
+#   end
   
   def draw
     @font.draw("Burke & Wills Bogus Adventure", 10,10, 1)
-    @font.draw("Health #{@player.health}", WIDTH - 120,10, 1)        
+    # @font.draw("Health #{@player.health}", WIDTH - 120,10, 1)        
 
     @terrain.draw
     @enemies.each {|enemy| enemy.draw }
-    @player.draw
-    @song.play(true) #Loop is on
-    @message.draw
-    @attack_message.draw
+#     @player.draw
+#     @song.play(true) #Loop is on
+#     @message.draw
+#     @attack_message.draw
 
     # Tile the background
     (WIDTH/BG_SIZE + 1).times do |x|
@@ -98,12 +105,8 @@ class GameWindow < Gosu::Window
       end
     end
     
-    def g_input
-      @finished = true
-    end
-    
   end
 end
 
-window = GameWindow.new
-window.show
+$window = Game.new
+$window.show
