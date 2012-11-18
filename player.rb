@@ -31,12 +31,12 @@ class Player
   
   def left
     @x -= 5
-    @image = @images[5]    
+    walk_left   
   end
 
   def right
     @x += 5
-    @image = @images[4]
+    walk_right
   end
 
   def up
@@ -69,6 +69,15 @@ class Player
   def walk_up
     @walk_cnt = 11 if @image == @images[0] or @image == @images[1] # Turn straight away
     walk { @image = (@image == @images[2])? @images[3] : @images[2] }
+  end
+  # Change between the two images to walk left
+  def walk_left
+    @walk_cnt = 11 if @image == @images[4] or @image == @images[5]
+    walk { @image = (@image == @images[6])? @images[7] : @images[6] }
+  end
+  def walk_right
+    @walk_cnt = 11 if @image == @images[6] or @image == @images[7]
+    walk { @image = (@image == @images[4])? @images[5] : @images[4] }
   end
 
   def check_enemies(enemies,attack_message)
