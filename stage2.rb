@@ -1,8 +1,8 @@
 class Stage2 < Stage
   def initialize
     super
-    @font = Font[default_font_name, 20]
-
+    @current_stage = 2
+    
     # Set background image
     @bg_image = Image["media/images/desert_tile.png"]
 

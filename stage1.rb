@@ -1,6 +1,8 @@
 class Stage1 < Stage
   def initialize
     super
+    @current_stage = 1
+    
      # Load default font and play little sound to start game
     @font = Font[default_font_name, 20]
 
