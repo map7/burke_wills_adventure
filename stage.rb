@@ -69,7 +69,7 @@ class Stage < Chingu::GameState
 
   def draw
     @font.draw("Burke & Wills Bogus Adventure", 10,10, 1)
-    # @font.draw("Health #{@player.health}", WIDTH - 120,10, 1)        
+    @font.draw("Health #{@player.health}", WIDTH - 120,10, 1)        
 
     @terrain.draw
     @enemies.each {|enemy| enemy.draw }
