@@ -5,6 +5,7 @@
 
 require 'chingu'
 include Gosu
+require './stage'
 require './stage1'
 require './stage2'
 

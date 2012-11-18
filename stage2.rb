@@ -1,4 +1,4 @@
-class Stage2 < Chingu::GameState
+class Stage2 < Stage
   def initialize
     super
     @font = Font[default_font_name, 20]
@@ -19,37 +19,8 @@ class Stage2 < Chingu::GameState
 
     # Put in opening message
     @message = Message.new(self)
-
   end
 
-  def update
-    @player.storage_coordinates
-
-    # Keyboard Events
-    if $window.button_down? Gosu::KbLeft or $window.button_down? Gosu::GpLeft then
-      @player.left
-      @attack_message.show, @message.show = false
-    elsif $window.button_down? Gosu::KbRight or $window.button_down? Gosu::GpRight then
-      @player.right
-      @attack_message.show, @message.show = false
-    elsif $window.button_down? Gosu::KbUp or $window.button_down? Gosu::GpButton0 then
-      @player.up
-      @attack_message.show, @message.show = false
-    elsif $window.button_down? Gosu::KbDown then
-      @player.down
-      @attack_message.show, @message.show = false
-    elsif $window.button_down? Gosu::KbEscape
-      exit
-    end
-
-    # Check for enemies
-    @player.check_enemies(@enemies, @attack_message)
-    
-    # Process the move
-    @player.move
-
-  end
-  
   def draw
     @font.draw("STAGE2 WOOOO HOOO!", 10,10, 1)
 
