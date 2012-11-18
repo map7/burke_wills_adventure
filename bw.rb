@@ -23,6 +23,7 @@ BG_SIZE=23
 MAX_ENEMIES=5
 
 class Game < Chingu::Window
+
   attr_reader :player
   
   def initialize
@@ -40,9 +41,13 @@ class Game < Chingu::Window
     # Load song
     Song["media/sounds/06\ Just\ To\ Feel\ Anything.ogg"].play(true)
 
-    @player = Player.new(self)
   end
 
+  def player
+    puts 'create player' if @player.nil?
+    @player ||= Player.new(self)
+  end
+  
 end
 
 $window = Game.new

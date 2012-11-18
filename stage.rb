@@ -21,7 +21,7 @@ class Stage < Chingu::GameState
     @message = Message.new(self)
 
     # Create a new player
-    @player = Player.new(self)
+    @player = $window.player
     @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
   end
   
