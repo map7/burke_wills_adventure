@@ -5,7 +5,7 @@
 class Terrain
 
   def initialize(window)
-    @shrub = Gosu::Image.new(window, "media/images/shrub.png",true)
+    @shrub = Image["media/images/shrub.png"]
     @locations = []
     rand(20).times do
       @locations << {x: rand(1024), y: rand(768)}
