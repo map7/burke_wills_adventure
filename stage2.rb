@@ -8,7 +8,7 @@ class Stage2 < Stage
     @terrain = Terrain.new(self, @current_stage)
     @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self, 1)}    # Create enemy's
 
-    @message.text = ""
+    @message.text = "According to my British training I should only eat the red berries"
   end
 
   def draw
