@@ -1,3 +1,5 @@
+require './stage2'
+
 class Stage1 < Chingu::GameState
   def initialize
     super
@@ -29,6 +31,7 @@ class Stage1 < Chingu::GameState
     
     # Put in opening message
     @message = Message.new(self)
+
   end
   
   def update
@@ -48,7 +51,7 @@ class Stage1 < Chingu::GameState
       @player.down
       @attack_message.show, @message.show = false
     elsif $window.button_down? Gosu::KbEscape
-      exit
+      push_game_state(Stage2)
     end
 
     # Check for enemies

@@ -23,6 +23,7 @@ class Game < Chingu::Window
     super WIDTH,HEIGHT, false
     self.caption = "Burke & Wills Bogus Adventure Aaron rules"
     push_game_state(Stage1)
+    transitional_game_state(Chingu::GameStates::FadeTo, {speed: 5})
   end
 end
 
