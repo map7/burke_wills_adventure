@@ -13,7 +13,7 @@ class Stage1 < Chingu::GameState
     @terrain = Terrain.new(self)
 
     # Create enemy's
-    @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self, rand(2))}
+    @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self, 0)}
 
     @attack_message = AttackMessage.new(self)
     

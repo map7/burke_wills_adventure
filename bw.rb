@@ -38,6 +38,7 @@ class Game < Chingu::Window
 
     @player = Player.new(self)
   end
+
 end
 
 $window = Game.new
