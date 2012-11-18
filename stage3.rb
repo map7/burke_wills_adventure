@@ -15,7 +15,10 @@ class Stage3 < Stage
     @player = $window.player
     @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
     @hut = Image["media/images/aborig_hut.png"]
+
     @aborig_man = Image["media/images/aborig_man.png"]
+
+    @message.text = "Here's someone I could ask about the those berries"
   end
 
   def draw
