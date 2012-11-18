@@ -9,7 +9,7 @@ class Player
   
   def initialize(window)
     @images = Gosu::Image.load_tiles($window, "media/images/burke_sprite1.png", 30, 48, false)
-    @attack_font = Gosu::Font.new($window, Gosu::default_font_name, 100)
+    @attack_font = @font = Font["media/fonts/pixelated.ttf", 100]
     
     # Set default variables for player
     @image = @images[0]

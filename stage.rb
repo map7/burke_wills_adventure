@@ -10,7 +10,7 @@ class Stage < Chingu::GameState
     super
     
      # Load default font and play little sound to start game    
-    @font = Font[default_font_name, 20]
+    @font = Font["media/fonts/pixelated.ttf", 20]
 
     # Create terrain object for shrubs mostly, not too big, not too small
     @terrain = Terrain.new(self)

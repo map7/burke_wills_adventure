@@ -2,7 +2,7 @@ class AttackMessage
   attr_accessor :text, :show
 
   def initialize(window)
-    @font = Gosu::Font.new($window, Gosu::default_font_name, 70)
+    @font = Font["media/fonts/pixelated.ttf", 70]
   end
   
   def draw

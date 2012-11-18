@@ -8,15 +8,16 @@ class Message
 
   def initialize(window)
     @message = Gosu::Image.new($window, "media/images/bottom_screen_dialog.png",true)
-    @font = Gosu::Font.new($window, Gosu::default_font_name, 20)
+    @font = Font["media/fonts/pixelated.ttf", 20]
     @show = true
   end
   
   def draw
     if self.show
-      @font.draw("Oh no! I've lost Wills! I need to find him if we're ever",
+      @font.draw("Oh no! I've lost Wills! I need to find him",
                  350, HEIGHT-120, 2, 1, 1, 0xff000000)
-      @font.draw("going to make it back to camp in time!", 350, HEIGHT-90, 2, 1, 1, 0xff000000)
+      @font.draw("if we're evergoing to make it back", 350, HEIGHT-90, 2, 1, 1, 0xff000000)
+      @font.draw("to camp in time!", 350, HEIGHT-60, 2, 1, 1, 0xff000000)
       @message.draw(0, HEIGHT-180, 1)
     end
   end
