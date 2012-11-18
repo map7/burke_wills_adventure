@@ -59,6 +59,10 @@ class Stage < Chingu::GameState
     when 1
       push_game_state(Stage2)
     when 2
+      push_game_state(Stage3)
+    when 3
+      push_game_state(Stage4)
+    when 4
       exit
     end
   end

@@ -8,6 +8,8 @@ include Gosu
 require './stage'
 require './stage1'
 require './stage2'
+require './stage3'
+require './stage4'
 
 require './player'
 require './terrain'
