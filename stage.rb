@@ -85,9 +85,7 @@ class Stage < Chingu::GameState
     # Tile the background
     (WIDTH/BG_SIZE + 1).times do |x|
       (HEIGHT/BG_SIZE + 1).times do |y|
-        #
-        # x, y, z-order
-        @bg_image.draw(BG_SIZE*x,BG_SIZE*y,0,1,1)
+        @bg_image.draw(BG_SIZE*x,BG_SIZE*y,0,1,1)        # x, y, z-order
       end
     end
   end
