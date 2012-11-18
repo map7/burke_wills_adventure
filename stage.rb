@@ -19,6 +19,10 @@ class Stage < Chingu::GameState
 
     # Put in opening message
     @message = Message.new(self)
+
+    # Create a new player
+    @player = Player.new(self)
+    @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
   end
   
   def update
@@ -56,6 +60,26 @@ class Stage < Chingu::GameState
       push_game_state(Stage2)
     when 2
       exit
+    end
+  end
+
+  def draw
+    @font.draw("Burke & Wills Bogus Adventure", 10,10, 1)
+    # @font.draw("Health #{@player.health}", WIDTH - 120,10, 1)        
+
+    @terrain.draw
+    @enemies.each {|enemy| enemy.draw }
+    @player.draw
+    @message.draw
+    @attack_message.draw
+
+    # Tile the background
+    (WIDTH/BG_SIZE + 1).times do |x|
+      (HEIGHT/BG_SIZE + 1).times do |y|
+        #
+        # x, y, z-order
+        @bg_image.draw(BG_SIZE*x,BG_SIZE*y,0,1,1)
+      end
     end
   end
 end

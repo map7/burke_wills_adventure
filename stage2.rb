@@ -14,22 +14,7 @@ class Stage2 < Stage
   end
 
   def draw
-    @font.draw("STAGE2 WOOOO HOOO!", 10,10, 1)
-
-    @terrain.draw
-    @enemies.each {|enemy| enemy.draw }
-    @player.draw
-    @message.draw
-    @attack_message.draw
-    
-    # Tile the background
-    (WIDTH/BG_SIZE + 1).times do |x|
-      (HEIGHT/BG_SIZE + 1).times do |y|
-        #
-        # x, y, z-order
-        @bg_image.draw(BG_SIZE*x,BG_SIZE*y,0,1,1)
-      end
-    end
-    @player.draw
+    super
+    @font.draw("STAGE2 WOOOO HOOO!", 10,30, 1)
   end
 end
