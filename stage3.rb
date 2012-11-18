@@ -6,6 +6,9 @@ class Stage3 < Stage
     # Set background image
     @bg_image = Image["media/images/desert_tile.png"]
 
+    # Create terrain object for shrubs mostly, not too big, not too small
+    @terrain = Terrain.new(self, @current_stage)
+
     # Create enemy's
     @enemies = []
     
