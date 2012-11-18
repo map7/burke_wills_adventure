@@ -8,9 +8,6 @@ class Stage2 < Stage
 
     # Create enemy's
     @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self, 1)}
-    
-    @player = $window.player
-    @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
   end
 
   def draw

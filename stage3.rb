@@ -8,9 +8,6 @@ class Stage3 < Stage
 
     # Create enemy's
     @enemies = []
-    
-    @player = $window.player
-    @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
   end
 
   def draw
