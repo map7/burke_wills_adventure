@@ -6,6 +6,7 @@
 require 'chingu'
 include Gosu
 require './stage1'
+require './stage2'
 
 require './player'
 require './terrain'

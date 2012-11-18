@@ -1,5 +1,3 @@
-require './stage2'
-
 class Stage1 < Chingu::GameState
   def initialize
     super
