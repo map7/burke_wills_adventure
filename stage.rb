@@ -52,6 +52,11 @@ class Stage < Chingu::GameState
     # Process the move
     @player.move
 
+    if @player.health < 0
+      @attack_message.text = "GAME OVER!"
+      @attack_message.show = true
+    end
+    
   end
 
   def change_stages
