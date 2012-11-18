@@ -7,8 +7,8 @@ class Message
   attr_accessor :text, :show
 
   def initialize(window)
-    @message = Gosu::Image.new(window, "media/images/bottom_screen_dialog.png",true)
-    @font = Gosu::Font.new(window, Gosu::default_font_name, 20)
+    @message = Gosu::Image.new($window, "media/images/bottom_screen_dialog.png",true)
+    @font = Gosu::Font.new($window, Gosu::default_font_name, 20)
     @show = true
   end
   

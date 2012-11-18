@@ -47,43 +47,43 @@ class Stage1 < Chingu::GameState
     # Create enemy's
     @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self, rand(2))}
 
-#     @attack_message = AttackMessage.new(self)
+    @attack_message = AttackMessage.new(self)
     
-#     # Create a new player
-#     @player = Player.new(self)
-#     @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
+    # Create a new player
+    @player = Player.new(self)
+    @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
     
-#     # Put in opening message
-#     @message = Message.new(self)
+    # Put in opening message
+    @message = Message.new(self)
   end
   
-#   def update
-#     @player.storage_coordinates
-    
-#     # Keyboard Events
-#     if button_down? Gosu::KbLeft or button_down? Gosu::GpLeft then
-#       @player.left
-#       @attack_message.show, @message.show = false
-#     elsif button_down? Gosu::KbRight or button_down? Gosu::GpRight then
-#       @player.right
-#       @attack_message.show, @message.show = false
-#     elsif button_down? Gosu::KbUp or button_down? Gosu::GpButton0 then
-#       @player.up
-#       @attack_message.show, @message.show = false
-#     elsif button_down? Gosu::KbDown then
-#       @player.down
-#       @attack_message.show, @message.show = false
-#     elsif button_down? Gosu::KbEscape
-#       exit
-#     end
+  def update
+    @player.storage_coordinates
 
-#     # Check for enemies
-#     @player.check_enemies(@enemies, @attack_message)
-    
-#     # Process the move
-#     @player.move
+    # Keyboard Events
+    if $window.button_down? Gosu::KbLeft or $window.button_down? Gosu::GpLeft then
+      @player.left
+      @attack_message.show, @message.show = false
+    elsif $window.button_down? Gosu::KbRight or $window.button_down? Gosu::GpRight then
+      @player.right
+      @attack_message.show, @message.show = false
+    elsif $window.button_down? Gosu::KbUp or $window.button_down? Gosu::GpButton0 then
+      @player.up
+      @attack_message.show, @message.show = false
+    elsif $window.button_down? Gosu::KbDown then
+      @player.down
+      @attack_message.show, @message.show = false
+    elsif $window.button_down? Gosu::KbEscape
+      exit
+    end
 
-#   end
+    # Check for enemies
+    @player.check_enemies(@enemies, @attack_message)
+    
+    # Process the move
+    @player.move
+
+  end
   
   def draw
     @font.draw("Burke & Wills Bogus Adventure", 10,10, 1)
@@ -91,10 +91,9 @@ class Stage1 < Chingu::GameState
 
     @terrain.draw
     @enemies.each {|enemy| enemy.draw }
-#     @player.draw
-#     @song.play(true) #Loop is on
-#     @message.draw
-#     @attack_message.draw
+    @player.draw
+    @message.draw
+    @attack_message.draw
 
     # Tile the background
     (WIDTH/BG_SIZE + 1).times do |x|
