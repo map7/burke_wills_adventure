@@ -13,7 +13,7 @@ class Stage < Chingu::GameState
     @font = Font["media/fonts/pixelated.ttf", 20]
 
     # Create terrain object for shrubs mostly, not too big, not too small
-    @terrain = Terrain.new(self)
+    @terrain = Terrain.new(self, 0)
 
     @attack_message = AttackMessage.new(self)
 
