@@ -46,6 +46,12 @@ class Stage < Chingu::GameState
       change_stages
     end
 
+    # Only allow up
+    @player.x = 0 if @player.x < 0
+    @player.x = (WIDTH - BORDER) if @player.x >= (WIDTH - BORDER)
+    @player.y = (HEIGHT - BORDER) if @player.y >= (HEIGHT - BORDER)
+
+    
     # Check for enemies
     @player.check_enemies(@enemies, @attack_message)
     

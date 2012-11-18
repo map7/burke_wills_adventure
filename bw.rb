@@ -19,6 +19,7 @@ require './attack_message'
 
 WIDTH=1024
 HEIGHT=768
+BORDER=24
 BG_SIZE=23
 MAX_ENEMIES=5
 

@@ -6,6 +6,7 @@
 
 class Player
   attr_reader :score, :health, :message
+  attr_accessor :x, :y
   
   def initialize(window)
     @images = Gosu::Image.load_tiles($window, "media/images/burke_sprite1.png", 30, 48, false)
