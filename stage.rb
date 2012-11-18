@@ -8,7 +8,17 @@ class Stage < Chingu::GameState
   
   def initialize
     super
+    
+     # Load default font and play little sound to start game    
     @font = Font[default_font_name, 20]
+
+    # Create terrain object for shrubs mostly, not too big, not too small
+    @terrain = Terrain.new(self)
+
+    @attack_message = AttackMessage.new(self)
+
+    # Put in opening message
+    @message = Message.new(self)
   end
   
   def update

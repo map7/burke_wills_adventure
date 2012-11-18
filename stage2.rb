@@ -6,19 +6,11 @@ class Stage2 < Stage
     # Set background image
     @bg_image = Image["media/images/desert_tile.png"]
 
-    # Create terrain object for shrubs mostly, not too big, not too small
-    @terrain = Terrain.new(self)
-
     # Create enemy's
     @enemies = (rand(MAX_ENEMIES)).times.map{|i| Enemy.new(self, 1)}
     
-    @attack_message = AttackMessage.new(self)
-    
     @player = $window.player
     @player.warp(WIDTH/2, HEIGHT-200) # Position starting point of player.
-
-    # Put in opening message
-    @message = Message.new(self)
   end
 
   def draw
