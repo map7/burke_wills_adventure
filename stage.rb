@@ -50,10 +50,7 @@ class Stage < Chingu::GameState
     @player.x = 0 if @player.x < 0
     @player.x = (WIDTH - BORDER) if @player.x >= (WIDTH - BORDER)
     @player.y = (HEIGHT - BORDER) if @player.y >= (HEIGHT - BORDER)
-
-    if @player.y < 0
-      change_stages
-    end
+    change_stages if @player.y < 0
     
     # Check for enemies
     @player.check_enemies(@enemies, @attack_message)
