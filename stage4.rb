@@ -1,7 +1,7 @@
-class Stage2 < Stage
+class Stage4 < Stage
   def initialize
     super
-    @current_stage = 2
+    @current_stage = 4
     
     # Set background image
     @bg_image = Image["media/images/desert_tile.png"]
@@ -15,6 +15,6 @@ class Stage2 < Stage
 
   def draw
     super
-    @font.draw("STAGE2 WOOOO HOOO!", 10,30, 1)
+    @font.draw("STAGE4 - THE BOSS", 10,30, 1)
   end
 end
