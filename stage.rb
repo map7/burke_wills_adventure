@@ -38,7 +38,9 @@ class Stage < Chingu::GameState
     elsif $window.button_down? Gosu::KbDown then
       @player.down
       @attack_message.show, @message.show = false
-
+    elsif $window.button_down? Gosu::KbSpace
+      puts 'pew pew'
+      sleep 0.3
     elsif $window.button_down? Gosu::KbEscape
       change_stages
     end
