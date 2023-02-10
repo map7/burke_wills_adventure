@@ -17,9 +17,9 @@ sudo apt-get install build-essential libsdl2-dev libgl1-mesa-dev libopenal-dev \
 sudo apt-get install ruby-dev
 
 ## If you are using a Ruby version manager (i.e. rvm or rbenv)
-gem install gosu
+gem install gosu chingu
 ## If you are using system Ruby, you will need "sudo" to install Ruby libraries (gems)
-sudo gem install gosu
+sudo gem install gosu chingu
 
 # Run
 ./bw.rb
